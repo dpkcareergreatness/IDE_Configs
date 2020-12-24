@@ -1,0 +1,6 @@
+--memcheck:leak-check=full
+--memcheck:error-limit=no
+--memcheck:track-origins=yes
+--memcheck:show-reachable=yes
+--memcheck:suppressions=/home/root/shared/profiling/suppressionlist1.txt
+-v
