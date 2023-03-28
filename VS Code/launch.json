@@ -1,0 +1,79 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+       "version": "0.2.0",
+        "configurations": [
+        {
+                "type": "gdb",
+                "request": "launch",
+                "name": "Unittest",
+                "target": "exe name",
+                "args": [
+                    "args to exe"
+                  ],
+                  "environment": [{ "name": "GTEST_FILTER ", "value": "PPPStateTest.PDSVaryingDataAddr" }],
+                  "setupCommands": [
+                    {
+                        "description": "Enable pretty-printing for gdb",
+                        "text": "-enable-pretty-printing",
+                        "ignoreFailures": true
+                    }
+                ],
+                "cwd": "${workspaceRoot}",
+                "valuesFormatting": "parseText"
+        },
+        {
+                "type": "gdb",
+                "request": "attach",
+                "name": "FPGA",
+                //"executable": "/home/pcg/deepak/build_cts/cts/glcts",
+                "executable": "/usr/bin/python3",
+                "target": "<gdb server ip address>:<gdb port listened to by server eg: 1234>",
+                "remote": true,
+                "cwd": "${workspaceRoot}",
+                "valuesFormatting": "parseText"
+        },
+        {
+            "type": "gdb",
+            "request": "attach",
+            "name": "RCAR_GLSC",
+            "gdbpath": "/usr/bin/gdb-multiarch",
+            "executable": "cross compiled binary location",
+            "setupCommands": [
+                {
+                    "description": "path for standard libraries BUT NOT WORKING!!!!",
+                    "text": "-exec set sysroot /home/deepak/RCAR_Yocto/output/build/build/tmp/work/h3ulcb-poky-linux/core-image-weston/1.0-r0/rootfs/",
+                    "ignoreFailures": true
+                }
+            ],
+            "target": "<gdb server ip address>:<gdb port listened to by server eg: 1234>",
+            "remote": true,
+            "printCalls": true,
+            "cwd": "${workspaceRoot}",
+            "valuesFormatting": "parseText"
+        }, 
+        {
+            "type": "gdb",
+            "request": "attach",
+            "name": "RCAR_GLES",
+            "gdbpath": "/usr/bin/gdb-multiarch",
+            "executable": "/home/deepak/ddk-VM_hw/output/target_aarch64/gles2test1",
+            "target": "<gdb server ip address>:<gdb port listened to by server eg: 1234>",
+            "remote": true,
+            "printCalls": true,
+            "cwd": "${workspaceRoot}",
+            "valuesFormatting": "parseText"
+        },   
+        {
+            "type": "gdb",
+            "request": "attach",
+            "name": "NoHW",
+            "executable": "/usr/bin/python3",
+            "target": "<localhost gdb server ip address>:<gdb port listened to by server eg: 1234>",
+            "remote": true,
+            "cwd": "${workspaceRoot}",
+            "valuesFormatting": "parseText"
+        }
+    ]
+}
